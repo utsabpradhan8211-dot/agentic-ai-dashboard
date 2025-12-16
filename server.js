@@ -1,5 +1,5 @@
 // server.js
-// Simple Node.js + Express backend for Agentic AI dashboard
+// Node.js + Express backend for Agentic AI dashboard with root-level index.html
 
 const express = require("express");
 const cors = require("cors");
@@ -11,7 +11,9 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
+
+// Serve static files from root (for index.html and any other assets)
+app.use(express.static(__dirname));
 
 // In-memory demo data
 let drugs = [
@@ -93,9 +95,9 @@ app.patch("/api/drugs/:id/status", (req, res) => {
   return res.json(drug);
 });
 
-// Fallback: SPA-style, always return index.html
+// Fallback: always return index.html for any unknown route
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 app.listen(PORT, () => {
