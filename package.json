@@ -1,0 +1,15 @@
+{
+  "name": "agentic-ai-dashboard",
+  "version": "1.0.0",
+  "description": "Agentic AI Pharmaceutical R&D interactive dashboard (Node.js + HTML + Chart.js)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.0"
+  }
+}
